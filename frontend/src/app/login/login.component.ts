@@ -19,20 +19,19 @@ export class LoginComponent implements OnInit {
   korisnicko: string;
   lozinka: string;
   poruka: string;
+  greska: boolean = false;
 
   login(){
       this.korisnikServis.login(this.korisnicko, this.lozinka).subscribe((povratnaVrednost: any) =>{
-        if(povratnaVrednost)
-        {
           if(povratnaVrednost.hasOwnProperty('pib'))
             this.ruter.navigate(['preduzece']);
-          else
+          else if(povratnaVrednost.hasOwnProperty('brojLK'))
             this.ruter.navigate(['kupac']);
-        }
-        else
-        {
-          this.poruka = "Greska";
-        }
+          else
+          {
+            this.poruka = "Pogresno uneti podaci";
+            this.greska = true;
+          }
       })
   }
 

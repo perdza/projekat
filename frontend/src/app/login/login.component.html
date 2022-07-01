@@ -18,6 +18,7 @@
     </tr>
 </table>
 
-<p class="greska">{{poruka}}</p>
+<span class="greska">{{poruka}}</span>
+<br/>
 
-<a routerLink="registracija">REGISTRACIJA</a>
+<span *ngIf="greska"> <a routerLink="registracija">REGISTRACIJA</a> </span>

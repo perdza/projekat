@@ -11,8 +11,6 @@ class KorisnikController {
         this.login = (req, res) => {
             let korisnicko = req.body.korisnicko;
             let lozinka = req.body.lozinka;
-            console.log(korisnicko);
-            console.log(lozinka);
             let preduzece = true;
             preduzece_1.default.findOne({ 'korisnicko_ime': korisnicko, 'lozinka': lozinka }, (err, preduzece) => {
                 if (err)

@@ -1,65 +1,96 @@
 <h2>Registracija</h2>
 
+<form style="display: inline-block;" #mojaforma='ngForm' (ngSubmit)="mojaforma.form.valid && registracija()">
 <table>
     <tr>
         <td>Ime i prezime:</td>
         <td>
-            <input type="text" name="ime" [(ngModel)] = "imeIprezime">
+            <input type="text" name="ime" [(ngModel)] = "imeIprezime" #ime= 'ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && ime.invalid'>
+            <span style="color: red;">Molim vas unesite ime!</span>
         </td>
     </tr>
     <tr>
         <td>Korisnicko:</td>
         <td>
-            <input type="text" name="korisnicko" [(ngModel)] = "korisnicko_ime">
+            <input type="text" name="korisnicko" [(ngModel)] = "korisnicko_ime" #korisnicko='ngModel'  required>
         </td>
-    </tr>
-    <tr>
-        <td>Lozinka:</td>
-        <td>
-            <input type="password" name="lozinka" [(ngModel)] = "lozinka">
+        <td *ngIf='mojaforma.submitted && korisnicko.invalid'>
+            <span style="color: red;">Molim vas unesite korisnicko!</span>
         </td>
     </tr>
     <tr>
         <td>Telefon:</td>
         <td>
-            <input type="text" name="telefon" [(ngModel)] = "telefon">
+            <input type="text" name="brojtelefona" [(ngModel)] = "telefon" #brojtelefona='ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && brojtelefona.invalid'>
+            <span style="color: red;">Molim vas unesite broj telefona!</span>
+        </td>
+    </tr>
+    <tr>
+        <td>Lozinka:</td>
+        <td>
+            <input type="text" name="sifra" [(ngModel)] = "lozinka" #sifra='ngModel' pattern="^[a-zA-Z]{1}(?=.*[A-Z])(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11}$" required>
+        </td>
+        <td *ngIf='mojaforma.submitted && sifra.invalid'>
+            <span *ngIf='sifra.errors.pattern' style="color: red;">Greska u paternu!</span>
+            <span *ngIf='!sifra.errors.pattern' style="color: red;">Molim vas unesite lozinku!</span>
         </td>
     </tr>
     <tr>
         <td>E-mail:</td>
         <td>
-            <input type="text" name="mejl" [(ngModel)] = "i_mejl">
+            <input type="text" name="mejl" [(ngModel)] = "i_mejl" #mejl = 'ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && mejl.invalid'>
+            <span style="color: red;">Molim vas unesite mejl!</span>
         </td>
     </tr>
     <tr>
         <td>E-Naziv preduzeca:</td>
         <td>
-            <input type="text" name="preduzece" [(ngModel)] = "nazivPreduzeca">
+            <input type="text" name="preduzece" [(ngModel)] = "nazivPreduzeca" #preduzece='ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && preduzece.invalid'>
+            <span style="color: red;">Molim vas unesite naziv preduzeca!</span>
         </td>
     </tr>
     <tr>
         <td>Adresa:</td>
         <td>
-            <input type="text" name="adresa" [(ngModel)] = "adresa">
+            <input type="text" name="adr" [(ngModel)] = "adresa" #adr='ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && adr.invalid'>
+            <span style="color: red;">Molim vas unesite adresu!</span>
         </td>
     </tr>
     <tr>
         <td>PIB:</td>
         <td>
-            <input type="text" name="pib" [(ngModel)] = "pib">
+            <input type="text" name="pibfirme" [(ngModel)] = "pib" #pibfirme='ngModel' pattern="^[1-9]{1}[0-9]{8}$" required>
+        </td>
+        <td *ngIf='mojaforma.submitted && pibfirme.invalid'>
+            <span *ngIf='pibfirme.errors.pattern' style="color: red;">Greska u paternu!</span>
+            <span *ngIf='!pibfirme.errors.pattern' style="color: red;">Molim vas unesite PIB!</span>
         </td>
     </tr>
     <tr>
         <td>MB:</td>
         <td>
-            <input type="text" name="maticni" [(ngModel)] = "maticniBrojPreduzeca">
+            <input type="text" name="maticni" [(ngModel)] = "maticniBrojPreduzeca" #maticni='ngModel' required>
+        </td>
+        <td *ngIf='mojaforma.submitted && maticni.invalid'>
+            <span style="color: red;">Molim vas unesite Maticni broj firme!</span>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <button (click) = "registracija()">Register</button>
+            <input type="submit" value="REGISTRACIJA">
         </td>
     </tr>
 </table>
+</form>
 <br>
 {{message}}

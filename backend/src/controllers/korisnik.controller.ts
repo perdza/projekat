@@ -9,9 +9,6 @@ export class KorisnikController{
         let korisnicko = req.body.korisnicko;
         let lozinka = req.body.lozinka;
 
-        //console.log(korisnicko)
-        //console.log(lozinka)
-
         let preduzece = true;
 
         preduzeceModel.findOne({'korisnicko_ime' : korisnicko, 'lozinka' : lozinka}, (err, preduzece) =>{
