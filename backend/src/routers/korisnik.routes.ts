@@ -12,5 +12,9 @@ korisnikRouter.route('/registracija').post(
     (req, res) => new KorisnikController().registracija(req, res)
 )
 
+korisnikRouter.route('/novalozinka').post(
+    (req, res) => new KorisnikController().promenaLozinke(req, res)
+)
+
 export default korisnikRouter;   
 

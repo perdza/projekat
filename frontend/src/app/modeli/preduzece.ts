@@ -1,6 +1,6 @@
 export class Preduzece{
     imeIprezime: string;
-    korisnicko_ime: string;
+    korisnicko: string;
     lozinka: string;
     telefon: number;
     i_mejl: string;

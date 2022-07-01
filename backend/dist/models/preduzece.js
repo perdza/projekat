@@ -9,7 +9,7 @@ let preduzeceSchema = new Schema({
     imeIprezime: {
         type: String
     },
-    korisnicko_ime: {
+    korisnicko: {
         type: String
     },
     lozinka: {

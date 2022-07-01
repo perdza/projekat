@@ -12,14 +12,14 @@ class KorisnikController {
             let korisnicko = req.body.korisnicko;
             let lozinka = req.body.lozinka;
             let preduzece = true;
-            preduzece_1.default.findOne({ 'korisnicko_ime': korisnicko, 'lozinka': lozinka }, (err, preduzece) => {
+            preduzece_1.default.findOne({ 'korisnicko': korisnicko, 'lozinka': lozinka }, (err, preduzece) => {
                 if (err)
                     preduzece = false;
                 else
                     res.json(preduzece);
             });
             if (!preduzece)
-                korisnik_1.default.findOne({ 'korisnicko_ime': korisnicko, 'lozinka': lozinka }, (err, korisnik) => {
+                korisnik_1.default.findOne({ 'korisnicko': korisnicko, 'lozinka': lozinka }, (err, korisnik) => {
                     if (err)
                         console.log(err);
                     else
@@ -29,7 +29,7 @@ class KorisnikController {
         this.registracija = (req, res) => {
             let preduzece = new preduzece_1.default({
                 imeIprezime: req.body.imeIprezime,
-                korisnicko_ime: req.body.korisnicko_ime,
+                korisnicko: req.body.korisnicko,
                 lozinka: req.body.lozinka,
                 telefon: req.body.telefon,
                 i_mejl: req.body.i_mejl,
@@ -47,6 +47,28 @@ class KorisnikController {
                     res.json({
                         "poruka": "ok"
                     });
+            });
+        };
+        this.promenaLozinke = (req, res) => {
+            let korisnicko = req.body.korisnicko;
+            let lozinka = req.body.lozinka;
+            preduzece_1.default.findOne({ 'korisnicko': korisnicko }, (err, preduzece) => {
+                if (err) {
+                    korisnik_1.default.updateOne({ 'korisnicko': korisnicko }, { $set: { 'lozinka': lozinka } }, (err, resp) => {
+                        if (err)
+                            console.log(err);
+                        else
+                            res.json({ 'poruka': "Uspesno promenjena lozinka!" });
+                    });
+                }
+                else {
+                    preduzece_1.default.updateOne({ 'korisnicko': korisnicko }, { $set: { 'lozinka': lozinka } }, (err, resp) => {
+                        if (err)
+                            console.log(err);
+                        else
+                            res.json({ 'poruka': "Uspesno promenjena lozinka!" });
+                    });
+                }
             });
         };
     }

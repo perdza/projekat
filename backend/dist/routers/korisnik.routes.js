@@ -8,5 +8,6 @@ const korisnik_controller_1 = require("../controllers/korisnik.controller");
 const korisnikRouter = express_1.default.Router();
 korisnikRouter.route('/login').post((req, res) => new korisnik_controller_1.KorisnikController().login(req, res));
 korisnikRouter.route('/registracija').post((req, res) => new korisnik_controller_1.KorisnikController().registracija(req, res));
+korisnikRouter.route('/novalozinka').post((req, res) => new korisnik_controller_1.KorisnikController().promenaLozinke(req, res));
 exports.default = korisnikRouter;
 //# sourceMappingURL=korisnik.routes.js.map

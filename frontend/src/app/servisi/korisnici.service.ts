@@ -15,7 +15,7 @@ export class KorisniciService {
   registracija(imeIprezimeForma, korisnicko_imeForma, lozinkaForma, telefonForma, i_mejlForma, nazivPreduzecaForma, adresaForma, pibForma, maticniBrojPreduzecaForma){
     const data = {
       imeIprezime: imeIprezimeForma,
-      korisnicko_ime: korisnicko_imeForma,
+      korisnicko: korisnicko_imeForma,
       lozinka: lozinkaForma,
       telefon: telefonForma, 
       i_mejl: i_mejlForma,
@@ -34,6 +34,14 @@ export class KorisniciService {
       lozinka: lozinkaIzForme
     }
     return this.http.post(`${this.uri}/korisnici/login`, data);
+  }
+
+  promenaLozinke(korisnicko, novaLozinka){
+    const data = {
+      korisnicko : korisnicko,
+      lozinka: novaLozinka
+    }
+    return this.http.post(`${this.uri}/korisnici/novalozinka`, data);
   }
 
 }

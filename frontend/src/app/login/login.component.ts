@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Korisnik } from '../modeli/korisnik';
-import { Preduzece } from '../modeli/preduzece';
 import { KorisniciService } from '../servisi/korisnici.service';
 
 @Component({
@@ -23,14 +21,19 @@ export class LoginComponent implements OnInit {
 
   login(){
       this.korisnikServis.login(this.korisnicko, this.lozinka).subscribe((povratnaVrednost: any) =>{
+        if(povratnaVrednost != null)
+        {
+          sessionStorage.setItem('lozinka', povratnaVrednost.lozinka)
+          sessionStorage.setItem('korisnicko', povratnaVrednost.korisnicko)
           if(povratnaVrednost.hasOwnProperty('pib'))
             this.ruter.navigate(['preduzece']);
           else if(povratnaVrednost.hasOwnProperty('brojLK'))
             this.ruter.navigate(['kupac']);
-          else
+        }
+        else
           {
             this.poruka = "Pogresno uneti podaci";
-            this.greska = true;
+            //this.greska = true;
           }
       })
   }

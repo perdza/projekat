@@ -2,6 +2,7 @@ import express from 'express'
 
 import preduzeceModel from '../models/preduzece'
 import korisnikModel from '../models/korisnik'
+import e from 'express';
 
 export class KorisnikController{
 
@@ -11,13 +12,13 @@ export class KorisnikController{
 
         let preduzece = true;
 
-        preduzeceModel.findOne({'korisnicko_ime' : korisnicko, 'lozinka' : lozinka}, (err, preduzece) =>{
+        preduzeceModel.findOne({'korisnicko' : korisnicko, 'lozinka' : lozinka}, (err, preduzece) =>{
             if (err) preduzece = false;
             else  res.json(preduzece) 
         })
 
         if(!preduzece)
-        korisnikModel.findOne({'korisnicko_ime' : korisnicko, 'lozinka' : lozinka}, (err, korisnik) =>{
+        korisnikModel.findOne({'korisnicko' : korisnicko, 'lozinka' : lozinka}, (err, korisnik) =>{
             if (err) console.log(err)
             else  res.json(korisnik) 
         })
@@ -27,7 +28,7 @@ export class KorisnikController{
 
         let preduzece = new preduzeceModel({
             imeIprezime: req.body.imeIprezime,
-            korisnicko_ime: req.body.korisnicko_ime,
+            korisnicko: req.body.korisnicko,
             lozinka: req.body.lozinka,
             telefon: req.body.telefon,
             i_mejl: req.body.i_mejl,
@@ -45,7 +46,30 @@ export class KorisnikController{
             else res.json({
                 "poruka": "ok"
             })
-        })
-        
+        })        
     }
+
+    promenaLozinke = (req: express.Request, res: express.Response) => {
+
+        let korisnicko = req.body.korisnicko;
+        let lozinka = req.body.lozinka;
+
+        preduzeceModel.findOne({'korisnicko' : korisnicko}, (err, preduzece) =>{
+            if (err)
+            {
+                korisnikModel.updateOne({'korisnicko': korisnicko}, {$set: {'lozinka': lozinka}}, (err, resp) =>{
+                    if(err) console.log(err)
+                    else res.json({'poruka': "Uspesno promenjena lozinka!"})
+                })
+            }
+            else
+            {
+                preduzeceModel.updateOne({'korisnicko': korisnicko}, {$set: {'lozinka': lozinka}}, (err, resp) =>{
+                    if(err) console.log(err)
+                    else res.json({'poruka': "Uspesno promenjena lozinka!"})
+                })
+            }
+        })
+    }
+
 }

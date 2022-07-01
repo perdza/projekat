@@ -1,1 +1,48 @@
-<h1>PREDUCEZE</h1>
+<h1>PREDUZECE</h1>
+
+
+<table>
+    <tr>
+        <td>
+            <button (click)='clickedButton()'>Promeni lozinku</button><br/>
+        </td>
+        <tr>
+        <div *ngIf='kliknuto == true'>
+            <table>
+                <tr>
+                    <td>
+                        Stara: 
+                    </td>
+                    <td>
+                        <input type="text" name='lozinka' [(ngModel)]='staraLozinka' required><br />
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Nova:
+                    </td>
+                    <td>
+                        <input type="text" name='lozinka1' [(ngModel)]='novaLozinka1' required><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Potvrda nove:
+                    </td>
+                    <td>
+                        <input type="text" name='lozinka2' [(ngModel)]='novaLozinka2' required>
+                    </td>        
+                </tr>
+            </table>
+        </div>
+        </tr>
+        <tr>
+            <td colspan="2" *ngIf="kliknuto">
+                <button class="button" (click)='promenaLozinke()'>Sacuvaj</button>
+            </td>
+        </tr>
+</table>
+
+<div class='err'>
+    {{poruka}}
+</div>
