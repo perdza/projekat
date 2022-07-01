@@ -1,1 +1,65 @@
-<p>registracija works!</p>
+<h2>Registracija</h2>
+
+<table>
+    <tr>
+        <td>Ime i prezime:</td>
+        <td>
+            <input type="text" name="ime" [(ngModel)] = "imeIprezime">
+        </td>
+    </tr>
+    <tr>
+        <td>Korisnicko:</td>
+        <td>
+            <input type="text" name="korisnicko" [(ngModel)] = "korisnicko_ime">
+        </td>
+    </tr>
+    <tr>
+        <td>Lozinka:</td>
+        <td>
+            <input type="password" name="lozinka" [(ngModel)] = "lozinka">
+        </td>
+    </tr>
+    <tr>
+        <td>Telefon:</td>
+        <td>
+            <input type="text" name="telefon" [(ngModel)] = "telefon">
+        </td>
+    </tr>
+    <tr>
+        <td>E-mail:</td>
+        <td>
+            <input type="text" name="mejl" [(ngModel)] = "i_mejl">
+        </td>
+    </tr>
+    <tr>
+        <td>E-Naziv preduzeca:</td>
+        <td>
+            <input type="text" name="preduzece" [(ngModel)] = "nazivPreduzeca">
+        </td>
+    </tr>
+    <tr>
+        <td>Adresa:</td>
+        <td>
+            <input type="text" name="adresa" [(ngModel)] = "adresa">
+        </td>
+    </tr>
+    <tr>
+        <td>PIB:</td>
+        <td>
+            <input type="text" name="pib" [(ngModel)] = "pib">
+        </td>
+    </tr>
+    <tr>
+        <td>MB:</td>
+        <td>
+            <input type="text" name="maticni" [(ngModel)] = "maticniBrojPreduzeca">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click) = "registracija()">Register</button>
+        </td>
+    </tr>
+</table>
+<br>
+{{message}}

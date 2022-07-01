@@ -1,1 +1,23 @@
-<p>login works!</p>
+<table>
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td>
+            <input type="text" name="korisnicko" [(ngModel)] = "korisnicko">
+        </td>
+    </tr>
+    <tr>
+        <td>Lozinka</td>
+        <td>
+            <input type="password" name="lozinka" [(ngModel)] = "lozinka">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click) = "login()">Login</button>
+        </td> 
+    </tr>
+</table>
+
+<p class="greska">{{poruka}}</p>
+
+<a routerLink="registracija">REGISTRACIJA</a>
