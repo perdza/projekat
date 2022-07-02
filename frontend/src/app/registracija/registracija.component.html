@@ -32,7 +32,8 @@
     <tr>
         <td>Lozinka:</td>
         <td>
-            <input type="text" name="sifra" [(ngModel)] = "lozinka" #sifra='ngModel' pattern="^[a-zA-Z]{1}(?=.*[A-Z])(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11}$" required>
+            <input type="text" name="sifra" [(ngModel)] = "lozinka" #sifra='ngModel'
+             pattern="^(?:([a-z]{1}(?=.*[A-Z])(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11})|([A-Z]{1}(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11}))$" required>
         </td>
         <td *ngIf='mojaforma.submitted && sifra.invalid'>
             <span *ngIf='sifra.errors.pattern' style="color: red;">Greska u paternu!</span>

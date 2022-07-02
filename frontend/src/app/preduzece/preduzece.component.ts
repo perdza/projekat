@@ -34,7 +34,7 @@ export class PreduzeceComponent implements OnInit {
   promenaLozinke(){
     if(this.staraLozinka != this.trenutniKorisnikLozinka)
       this.poruka = "Pogresno uneta trenutna lozinka";
-    else if(!(/^[a-zA-Z]{1}(?=.*[A-Z])(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11}$/.test(this.novaLozinka1)))
+    else if(!(/^(?:([a-z]{1}(?=.*[A-Z])(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11})|([A-Z]{1}(?=.*\d)(?=.*\W)[a-zA-Z\d\W]{7,11}))$/.test(this.novaLozinka1)))
       this.poruka = "Nova lozinka ne ispunjava uslove"
     else if(this.novaLozinka1 != this.novaLozinka2)
       this.poruka = "Unosi nove lozinke se ne poklapaju";

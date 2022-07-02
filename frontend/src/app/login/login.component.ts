@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         else
           {
             this.poruka = "Pogresno uneti podaci";
-            //this.greska = true;
+            this.greska = true;
           }
       })
   }
