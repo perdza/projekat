@@ -21,22 +21,12 @@ export class RegistracijaComponent implements OnInit {
   imeIprezime: string;
   korisnicko_ime: string;
   lozinka: string;
-  telefon: number;
+  telefon: string;
   i_mejl: string;
   nazivPreduzeca: string;
   adresa: string;
   pib: number;
   maticniBrojPreduzeca: string;
-
-  izabraniFile: File;
-
-  onFileChanged(event) {
-    this.izabraniFile = event.target.files[0];
-  }
-
-  onUpload(){
-      
-  }
 
   registracija(){
         this.korisnikServis.registracija(this.imeIprezime, this.korisnicko_ime, this.lozinka, this.telefon, this.i_mejl, this.nazivPreduzeca, this.adresa,

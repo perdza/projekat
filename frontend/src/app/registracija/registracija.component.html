@@ -50,7 +50,7 @@
         </td>
     </tr>
     <tr>
-        <td>E-Naziv preduzeca:</td>
+        <td>Naziv preduzeca:</td>
         <td>
             <input type="text" name="preduzece" [(ngModel)] = "nazivPreduzeca" #preduzece='ngModel' required>
         </td>
@@ -94,22 +94,21 @@
 </table>
 </form>
 
+<br>
+{{message}}
+
  <!--    
     <tr>
     <td colspan="2">
         <input type="file" name="grb">
     </td>
     </tr> <input type="file" (change)="onFileChanged($event)"> 
---> 
-<!--<form action="/korisnici/registracija" method="post" enctype="multipart/form-data">
+<form action="/korisnici/registracija" method="post" enctype="multipart/form-data">
     Fotografije
     <input type="file" name="photo">
   </form>
--->
 <form action="/korisnici/registracija" method="post" enctype="multipart/form-data">
     Fotografije
     <input type="file" name="photos" multiple/>
   </form>
-
-<br>
-{{message}}
+  -->

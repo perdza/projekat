@@ -16,7 +16,7 @@ let korisnikSchema = new Schema({
         type: String
     },
     telefon: {
-        type: Number
+        type: String
     },
     brojLK: {
         type: Number

@@ -38,22 +38,7 @@ class KorisnikController {
             let adresa = req.body.adresa;
             let pib = req.body.pib;
             let maticniBrojPreduzeca = req.body.maticniBrojPreduzeca;
-            preduzece_1.default.collection.insertOne({
-                'imeIprezime': imeIprezime,
-                'korisnicko': korisnicko,
-                'lozinka': lozinka,
-                'telefon': telefon,
-                'i_mejl': i_mejl,
-                'nazivPreduzeca': nazivPreduzeca,
-                'adresa': adresa,
-                'pib': pib,
-                'maticniBrojPreduzeca': maticniBrojPreduzeca,
-                'slika': upload.req.files
-            }).then(kor => { res.json({ 'poruka': 'ok' }); }).catch(err => {
-                res.json(err);
-            });
-            /*
-            let preduzece = new preduzeceModel({
+            let preduzece = new preduzece_1.default({
                 imeIprezime: req.body.imeIprezime,
                 korisnicko: req.body.korisnicko,
                 lozinka: req.body.lozinka,
@@ -62,20 +47,36 @@ class KorisnikController {
                 nazivPreduzeca: req.body.nazivPreduzeca,
                 adresa: req.body.adresa,
                 pib: req.body.pib,
-                maticniBrojPreduzeca: req.body.maticniBrojPreduzeca,
-            })
-    
-            preduzece.save((err, resp) =>{
-                if(err) {
+                maticniBrojPreduzeca: req.body.maticniBrojPreduzeca
+            });
+            preduzece.save((err, resp) => {
+                if (err) {
                     console.log(err);
-                    res.status(400).json({"poruka" : "greska"})
+                    res.status(400).json({ "poruka": "greska" });
                 }
-                else res.json({
-                    "poruka": "ok"
-                })
-            })
-            */
+                else
+                    res.json({
+                        "poruka": "ok"
+                    });
+            });
         };
+        /*
+     preduzeceModel.collection.insertOne({
+         'imeIprezime':imeIprezime,
+         'korisnicko':korisnicko,
+         'lozinka': lozinka,
+         'telefon': telefon,
+         'i_mejl': i_mejl,
+         'nazivPreduzeca': nazivPreduzeca,
+         'adresa': adresa,
+         'pib' : pib,
+         'maticniBrojPreduzeca': maticniBrojPreduzeca,
+         'slika': upload.req.files
+     }).then(kor=>
+         {res.json({'poruka': 'ok'})}).catch(err=>{
+             res.json(err);
+         })
+     */
         this.promenaLozinke = (req, res) => {
             let korisnicko = req.body.korisnicko;
             let lozinka = req.body.lozinka;

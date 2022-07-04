@@ -3,6 +3,6 @@ export class Korisnik{
     lozinka: string;
     ime: string;
     prezime: string;
-    telefon: number;
+    telefon: string;
     brojLK: number;
 }

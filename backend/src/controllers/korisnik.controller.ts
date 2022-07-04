@@ -38,7 +38,30 @@ export class KorisnikController{
         let adresa = req.body.adresa;
         let pib = req.body.pib;
         let maticniBrojPreduzeca = req.body.maticniBrojPreduzeca;
+ 
+        let preduzece = new preduzeceModel({
+            imeIprezime: req.body.imeIprezime,
+            korisnicko: req.body.korisnicko,
+            lozinka: req.body.lozinka,
+            telefon: req.body.telefon,
+            i_mejl: req.body.i_mejl,
+            nazivPreduzeca: req.body.nazivPreduzeca,
+            adresa: req.body.adresa,
+            pib: req.body.pib,
+            maticniBrojPreduzeca: req.body.maticniBrojPreduzeca
+        })
 
+        preduzece.save((err, resp) =>{
+            if(err) {
+                console.log(err);
+                res.status(400).json({"poruka" : "greska"})
+            }
+            else res.json({
+                "poruka": "ok"
+            })
+        }) 
+    }
+           /*
         preduzeceModel.collection.insertOne({
             'imeIprezime':imeIprezime,
             'korisnicko':korisnicko,
@@ -54,31 +77,7 @@ export class KorisnikController{
             {res.json({'poruka': 'ok'})}).catch(err=>{
                 res.json(err);
             })
-
-        /*
-        let preduzece = new preduzeceModel({
-            imeIprezime: req.body.imeIprezime,
-            korisnicko: req.body.korisnicko,
-            lozinka: req.body.lozinka,
-            telefon: req.body.telefon,
-            i_mejl: req.body.i_mejl,
-            nazivPreduzeca: req.body.nazivPreduzeca,
-            adresa: req.body.adresa,
-            pib: req.body.pib,
-            maticniBrojPreduzeca: req.body.maticniBrojPreduzeca,
-        })
-
-        preduzece.save((err, resp) =>{
-            if(err) {
-                console.log(err);
-                res.status(400).json({"poruka" : "greska"})
-            }
-            else res.json({
-                "poruka": "ok"
-            })
-        }) 
-        */    
-    }
+        */
 
     promenaLozinke = (req: express.Request, res: express.Response) => {
 

@@ -14,7 +14,7 @@ let preduzeceSchema = new Schema({
         type: String
     },
     telefon: {
-        type: Number
+        type: String
     },
     i_mejl: {
         type: String
@@ -30,11 +30,14 @@ let preduzeceSchema = new Schema({
     },
     maticniBrojPreduzeca: {
         type: Number
-    },
-    slika: {
-        type: Array
     }
 }
 )
 
 export default mongoose.model('preduzeceModel', preduzeceSchema, 'preduzeca')
+
+    /*,
+    slika: {
+        type: Array
+    }
+    */
