@@ -32,13 +32,8 @@ let preduzeceSchema = new Schema({
         type: Number
     },
     slika: {
-        type: String
-    }
-    /*,
-    slika: {
         type: Array
     }
-    */
 }
 )
 

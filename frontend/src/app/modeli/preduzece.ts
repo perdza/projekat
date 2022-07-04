@@ -8,6 +8,5 @@ export class Preduzece{
     adresa: string;
     pib: number;
     maticniBrojPreduzeca: string;
-    slika: string;
-    //slika: Array<Object>;
+    slika: Array<Object>;
 }

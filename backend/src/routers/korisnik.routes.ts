@@ -10,7 +10,7 @@ korisnikRouter.route('/login').post(
     (req, res) => new KorisnikController().login(req, res)
 )
 
-korisnikRouter.route('/registracija').post(upload.single('photo'),
+korisnikRouter.route('/registracija').post( upload.array('photos',2),
     (req, res) => new KorisnikController().registracija(req, res)
 )
 

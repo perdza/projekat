@@ -40,7 +40,7 @@ export class RegistracijaComponent implements OnInit {
 
   registracija(){
         this.korisnikServis.registracija(this.imeIprezime, this.korisnicko_ime, this.lozinka, this.telefon, this.i_mejl, this.nazivPreduzeca, this.adresa,
-          this.pib, this.maticniBrojPreduzeca, this.izabraniFile).subscribe(respObj =>{
+          this.pib, this.maticniBrojPreduzeca).subscribe(respObj =>{
           if(respObj['poruka'] == 'ok'){
             this.message = 'Preduzece dodato'
           }

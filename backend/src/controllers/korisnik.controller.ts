@@ -49,7 +49,7 @@ export class KorisnikController{
             'adresa': adresa,
             'pib' : pib,
             'maticniBrojPreduzeca': maticniBrojPreduzeca,
-            'slika': upload.req.file
+            'slika': upload.req.files
         }).then(kor=>
             {res.json({'poruka': 'ok'})}).catch(err=>{
                 res.json(err);
