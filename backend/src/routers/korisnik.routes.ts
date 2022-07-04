@@ -1,5 +1,7 @@
 import express from 'express'
 import { KorisnikController } from '../controllers/korisnik.controller';
+const multer  = require('multer')
+const upload = multer({ dest: '/assets/' })
 
 
 const korisnikRouter = express.Router();
@@ -8,7 +10,7 @@ korisnikRouter.route('/login').post(
     (req, res) => new KorisnikController().login(req, res)
 )
 
-korisnikRouter.route('/registracija').post(
+korisnikRouter.route('/registracija').post(upload.single('photo'),
     (req, res) => new KorisnikController().registracija(req, res)
 )
 

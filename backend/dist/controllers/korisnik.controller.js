@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.KorisnikController = void 0;
 const preduzece_1 = __importDefault(require("../models/preduzece"));
 const korisnik_1 = __importDefault(require("../models/korisnik"));
+const multer = require('multer');
+const upload = multer({ dest: '/assets/' });
 class KorisnikController {
     constructor() {
         this.login = (req, res) => {
@@ -27,7 +29,31 @@ class KorisnikController {
                 });
         };
         this.registracija = (req, res) => {
-            let preduzece = new preduzece_1.default({
+            let imeIprezime = req.body.imeIprezime;
+            let korisnicko = req.body.korisnicko;
+            let lozinka = req.body.lozinka;
+            let telefon = req.body.telefon;
+            let i_mejl = req.body.i_mejl;
+            let nazivPreduzeca = req.body.nazivPreduzeca;
+            let adresa = req.body.adresa;
+            let pib = req.body.pib;
+            let maticniBrojPreduzeca = req.body.maticniBrojPreduzeca;
+            preduzece_1.default.collection.insertOne({
+                'imeIprezime': imeIprezime,
+                'korisnicko': korisnicko,
+                'lozinka': lozinka,
+                'telefon': telefon,
+                'i_mejl': i_mejl,
+                'nazivPreduzeca': nazivPreduzeca,
+                'adresa': adresa,
+                'pib': pib,
+                'maticniBrojPreduzeca': maticniBrojPreduzeca,
+                'slika': upload.req.file
+            }).then(kor => { res.json({ 'poruka': 'ok' }); }).catch(err => {
+                res.json(err);
+            });
+            /*
+            let preduzece = new preduzeceModel({
                 imeIprezime: req.body.imeIprezime,
                 korisnicko: req.body.korisnicko,
                 lozinka: req.body.lozinka,
@@ -36,18 +62,19 @@ class KorisnikController {
                 nazivPreduzeca: req.body.nazivPreduzeca,
                 adresa: req.body.adresa,
                 pib: req.body.pib,
-                maticniBrojPreduzeca: req.body.maticniBrojPreduzeca
-            });
-            preduzece.save((err, resp) => {
-                if (err) {
+                maticniBrojPreduzeca: req.body.maticniBrojPreduzeca,
+            })
+    
+            preduzece.save((err, resp) =>{
+                if(err) {
                     console.log(err);
-                    res.status(400).json({ "poruka": "greska" });
+                    res.status(400).json({"poruka" : "greska"})
                 }
-                else
-                    res.json({
-                        "poruka": "ok"
-                    });
-            });
+                else res.json({
+                    "poruka": "ok"
+                })
+            })
+            */
         };
         this.promenaLozinke = (req, res) => {
             let korisnicko = req.body.korisnicko;

@@ -1,8 +1,11 @@
 import express from 'express'
+import e from 'express';
 
 import preduzeceModel from '../models/preduzece'
 import korisnikModel from '../models/korisnik'
-import e from 'express';
+
+const multer  = require('multer')
+const upload = multer({ dest: '/assets/' })
 
 export class KorisnikController{
 
@@ -26,6 +29,33 @@ export class KorisnikController{
 
      registracija = (req: express.Request, res: express.Response) => {
 
+        let imeIprezime = req.body.imeIprezime;
+        let korisnicko = req.body.korisnicko;
+        let lozinka = req.body.lozinka;
+        let telefon = req.body.telefon;
+        let i_mejl = req.body.i_mejl;
+        let nazivPreduzeca = req.body.nazivPreduzeca;
+        let adresa = req.body.adresa;
+        let pib = req.body.pib;
+        let maticniBrojPreduzeca = req.body.maticniBrojPreduzeca;
+
+        preduzeceModel.collection.insertOne({
+            'imeIprezime':imeIprezime,
+            'korisnicko':korisnicko,
+            'lozinka': lozinka,
+            'telefon': telefon,
+            'i_mejl': i_mejl,
+            'nazivPreduzeca': nazivPreduzeca,
+            'adresa': adresa,
+            'pib' : pib,
+            'maticniBrojPreduzeca': maticniBrojPreduzeca,
+            'slika': upload.req.file
+        }).then(kor=>
+            {res.json({'poruka': 'ok'})}).catch(err=>{
+                res.json(err);
+            })
+
+        /*
         let preduzece = new preduzeceModel({
             imeIprezime: req.body.imeIprezime,
             korisnicko: req.body.korisnicko,
@@ -35,7 +65,7 @@ export class KorisnikController{
             nazivPreduzeca: req.body.nazivPreduzeca,
             adresa: req.body.adresa,
             pib: req.body.pib,
-            maticniBrojPreduzeca: req.body.maticniBrojPreduzeca
+            maticniBrojPreduzeca: req.body.maticniBrojPreduzeca,
         })
 
         preduzece.save((err, resp) =>{
@@ -46,7 +76,8 @@ export class KorisnikController{
             else res.json({
                 "poruka": "ok"
             })
-        })        
+        }) 
+        */    
     }
 
     promenaLozinke = (req: express.Request, res: express.Response) => {

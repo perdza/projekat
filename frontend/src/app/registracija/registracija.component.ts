@@ -27,11 +27,20 @@ export class RegistracijaComponent implements OnInit {
   adresa: string;
   pib: number;
   maticniBrojPreduzeca: string;
-  
+
+  izabraniFile: File;
+
+  onFileChanged(event) {
+    this.izabraniFile = event.target.files[0];
+  }
+
+  onUpload(){
+      
+  }
 
   registracija(){
         this.korisnikServis.registracija(this.imeIprezime, this.korisnicko_ime, this.lozinka, this.telefon, this.i_mejl, this.nazivPreduzeca, this.adresa,
-          this.pib, this.maticniBrojPreduzeca).subscribe(respObj =>{
+          this.pib, this.maticniBrojPreduzeca, this.izabraniFile).subscribe(respObj =>{
           if(respObj['poruka'] == 'ok'){
             this.message = 'Preduzece dodato'
           }

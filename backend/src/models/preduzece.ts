@@ -1,5 +1,6 @@
 import mongoose, { mongo } from 'mongoose';
 
+
 const Schema = mongoose.Schema;
 
 let preduzeceSchema = new Schema({
@@ -29,7 +30,15 @@ let preduzeceSchema = new Schema({
     },
     maticniBrojPreduzeca: {
         type: Number
+    },
+    slika: {
+        type: String
     }
+    /*,
+    slika: {
+        type: Array
+    }
+    */
 }
 )
 

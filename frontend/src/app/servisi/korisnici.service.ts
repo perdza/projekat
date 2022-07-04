@@ -12,7 +12,8 @@ export class KorisniciService {
   uri = 'http://localhost:4000'
 
 
-  registracija(imeIprezimeForma, korisnicko_imeForma, lozinkaForma, telefonForma, i_mejlForma, nazivPreduzecaForma, adresaForma, pibForma, maticniBrojPreduzecaForma){
+  registracija(imeIprezimeForma, korisnicko_imeForma, lozinkaForma, telefonForma, i_mejlForma, nazivPreduzecaForma, adresaForma, pibForma, maticniBrojPreduzecaForma, file){
+    console.log(file);
     const data = {
       imeIprezime: imeIprezimeForma,
       korisnicko: korisnicko_imeForma,
@@ -22,7 +23,7 @@ export class KorisniciService {
       nazivPreduzeca: nazivPreduzecaForma,
       adreasa: adresaForma,
       pib: pibForma,
-      maticniBrojPreduzeca: maticniBrojPreduzecaForma
+      maticniBrojPreduzeca: maticniBrojPreduzecaForma,
     }
     return this.http.post(`${this.uri}/korisnici/registracija`, data)
   }

@@ -93,5 +93,18 @@
     </tr>
 </table>
 </form>
+
+ <!--    
+    <tr>
+    <td colspan="2">
+        <input type="file" name="grb">
+    </td>
+    </tr> <input type="file" (change)="onFileChanged($event)"> 
+--> 
+<form action="/korisnici/registracija" method="post" enctype="multipart/form-data">
+    Fotografije
+    <input type="file" name="photo">
+  </form>
+
 <br>
 {{message}}

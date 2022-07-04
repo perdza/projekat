@@ -32,7 +32,15 @@ let preduzeceSchema = new Schema({
     },
     maticniBrojPreduzeca: {
         type: Number
+    },
+    slika: {
+        type: String
     }
+    /*,
+    slika: {
+        type: Array
+    }
+    */
 });
 exports.default = mongoose_1.default.model('preduzeceModel', preduzeceSchema, 'preduzeca');
 //# sourceMappingURL=preduzece.js.map
