@@ -1,8 +1,5 @@
 import express from 'express'
 import { KorisnikController } from '../controllers/korisnik.controller';
-const multer  = require('multer')
-const upload = multer({ dest: '/assets/' })
-
 
 const korisnikRouter = express.Router();
 
